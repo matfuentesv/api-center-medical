@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3c7c16a3-c1ec-407e-a34d-89b17961c572",
+		"_postman_id": "32c8eee8-606e-454d-97b5-6e3d309cde6a",
 		"name": "api-center-medical",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "1152972",
-		"_collection_link": "https://galactic-sunset-296695.postman.co/workspace/1.--Configuration~48e44916-e4da-4990-b641-c948b388dcab/collection/1152972-3c7c16a3-c1ec-407e-a34d-89b17961c572?action=share&source=collection_link&creator=1152972"
+		"_exporter_id": "29351789"
 	},
 	"item": [
 		{
@@ -13,12 +12,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/api/getAllPatients",
+					"raw": "http://localhost:8081/api/getAllPatients",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8082",
+					"port": "8081",
 					"path": [
 						"api",
 						"getAllPatients"
@@ -33,12 +32,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/api/historicalMedicalRecords/Jane",
+					"raw": "http://localhost:8081/api/historicalMedicalRecords/Jane",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8082",
+					"port": "8081",
 					"path": [
 						"api",
 						"historicalMedicalRecords",
@@ -54,12 +53,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/api/allMedicalRecords",
+					"raw": "http://localhost:8081/api/allMedicalRecords",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8082",
+					"port": "8081",
 					"path": [
 						"api",
 						"allMedicalRecords"
@@ -74,12 +73,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/api/findDoctor/Dr. Smith",
+					"raw": "http://localhost:8081/api/findDoctor/Dr. Smith",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8082",
+					"port": "8081",
 					"path": [
 						"api",
 						"findDoctor",
