@@ -6,7 +6,7 @@
 	<artifactId>api-center-medical</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api-center-medical</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Api que gestiona informacion de pacientes y medicos</description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

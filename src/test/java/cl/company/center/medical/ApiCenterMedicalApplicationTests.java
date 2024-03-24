@@ -1,4 +1,4 @@
-package cl.company.center.medical.apicentermedical;
+package cl.company.center.medical;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

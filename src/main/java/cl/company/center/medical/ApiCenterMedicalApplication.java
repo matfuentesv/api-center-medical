@@ -1,4 +1,4 @@
-package cl.company.center.medical.apicentermedical;
+package cl.company.center.medical;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
