@@ -1,6 +1,4 @@
-HELP.md
-!.mvn/wrapper/maven-wrapper.jar
-
+# Excluye archivos específicos generados por herramientas de desarrollo
 
 ### STS ###
 .apt_generated
@@ -29,3 +27,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Excluye archivos generados
+
+# Excluye el archivo específico generado por Maven
+!.mvn/wrapper/maven-wrapper.jar
