@@ -1,257 +1,98 @@
-# api-center-medical
+# API del Centro Médico
 
-Api encargada de gestionar informacion de pacientes y medicos:
+Esta API proporciona funcionalidades para gestionar médicos, pacientes y historiales médicos en un centro médico.
 
+## Endpoints Disponibles
 
+### Usuarios
 
-## Uso básico
-```http
-GET /getAllPatients                    : Obtiene la lista completa de pacientes
-GET /historicalMedicalRecords/{name}   : Obtiene el historial del paciente filtrado por su nombre 
-GET /allMedicalRecords                 : Obtiene el listado completo de medicos
-GET /findDoctor/{name}                 : Obtiene un medico filtrado por nombre
-```
+- **Buscar Usuario**
+  - Método: GET
+  - Ruta: `/api/findUser`
+  - Descripción: Busca un usuario por nombre de usuario y contraseña.
+  - Ejemplo de Ejecución:
+    - **Entrada:**
+      - Cabeceras:
+        - user: "usuario123"
+        - password: "contraseña123"
+    - **Salida Exitosa (200 OK):**
+      - Cuerpo de la Respuesta:
+        ```json
+        {
+          "id": 123,
+          "nombre": "Usuario de Ejemplo",
+          "email": "usuario@example.com",
+          ...
+        }
+        ```
+    - **Salida Errónea (400 Bad Request):**
+      - Cuerpo de la Respuesta:
+        ```json
+        {
+          "error": "Algunos de los parámetros no se ingresaron"
+        }
+        ```
 
+### Médicos
 
-### Obtiene la lista completa de pacientes
+- **Buscar Todos los Médicos**
+  - Método: GET
+  - Ruta: `/api/findAllDoctor`
+  - Descripción: Busca todos los médicos disponibles en el sistema.
+  - Ejemplo de Ejecución: (mismo formato que el anterior)
 
-GET /getAllPatients
+- **Buscar Médico por Run**
+  - Método: GET
+  - Ruta: `/api/findDoctorByRun/{run}`
+  - Descripción: Busca un médico por su Run.
+  - Ejemplo de Ejecución: (mismo formato que el anterior)
 
-Respuesta:
+- **Crear Médico**
+  - Método: POST
+  - Ruta: `/api/createDoctor`
+  - Descripción: Crea un nuevo médico en el sistema.
+  - Ejemplo de Ejecución: (mismo formato que el anterior)
 
-```json
-[
-  {
-    "id": "1",
-    "name": "John",
-    "age": 30,
-    "address": "Avenida 456",
-    "medicalRecords": [
-      {
-        "date": "2022-01-15",
-        "doctor": {
-          "id": "D001",
-          "name": "Dr. Smith",
-          "specialization": "Cardiología",
-          "phoneNumber": "+123456789",
-          "email": "dr.smith@example.com",
-          "consultationHours": "Lunes a Viernes 9:00-17:00",
-          "hospital": "Hospital Central"
-        },
-        "diagnosis": "Gripe",
-        "treatment": "Descanso y medicación"
-      },
-      {
-        "date": "2022-02-05",
-        "doctor": {
-          "id": "D002",
-          "name": "Dr. Johnson",
-          "specialization": "Pediatría",
-          "phoneNumber": "+987654321",
-          "email": "dr.johnson@example.com",
-          "consultationHours": "Lunes a Viernes 8:00-16:00",
-          "hospital": "Hospital Infantil"
-        },
-        "diagnosis": "Esguince de tobillo",
-        "treatment": "Inmovilización y fisioterapia"
-      },
-      {
-        "date": "2022-03-20",
-        "doctor": {
-          "id": "D003",
-          "name": "Dr. Martinez",
-          "specialization": "Neurología",
-          "phoneNumber": "+112233445",
-          "email": "dr.martinez@example.com",
-          "consultationHours": "Martes y Jueves 10:00-18:00",
-          "hospital": "Hospital Neurológico"
-        },
-        "diagnosis": "Dolor abdominal",
-        "treatment": "Estudios para diagnóstico"
-      }
-    ]
-  },
-  {
-    "id": "2",
-    "name": "Jane",
-    "age": 25,
-    "address": "Calle Principal",
-    "medicalRecords": [
-      {
-        "date": "2022-04-10",
-        "doctor": {
-          "id": "D004",
-          "name": "Dra. Garcia",
-          "specialization": "Dermatología",
-          "phoneNumber": "+554433221",
-          "email": "dra.garcia@example.com",
-          "consultationHours": "Lunes, Miércoles y Viernes 8:30-16:30",
-          "hospital": "Hospital Dermatológico"
-        },
-        "diagnosis": "Fiebre alta",
-        "treatment": "Antibióticos y reposo"
-      },
-      {
-        "date": "2022-05-22",
-        "doctor": {
-          "id": "D005",
-          "name": "Dr. Fernandez",
-          "specialization": "Oftalmología",
-          "phoneNumber": "+778899001",
-          "email": "dr.fernandez@example.com",
-          "consultationHours": "Lunes y Jueves 9:30-17:30",
-          "hospital": "Hospital Oftalmológico"
-        },
-        "diagnosis": "Lesión en la rodilla",
-        "treatment": "Cirugía reconstructiva"
-      },
-      {
-        "date": "2022-06-18",
-        "doctor": {
-          "id": "D006",
-          "name": "Dra. Lopez",
-          "specialization": "Ginecología",
-          "phoneNumber": "+112233445",
-          "email": "dra.lopez@example.com",
-          "consultationHours": "Lunes, Miércoles y Viernes 8:00-16:00",
-          "hospital": "Hospital de la Mujer"
-        },
-        "diagnosis": "Conjuntivitis",
-        "treatment": "Gotas oftálmicas y lavados"
-      }
-    ]
-  }
-]
-```
+- **Actualizar Médico**
+  - Método: PUT
+  - Ruta: `/api/updateDoctor/{id}`
+  - Descripción: Actualiza un médico existente en el sistema.
+  - Ejemplo de Ejecución: (mismo formato que el anterior)
 
+- **Eliminar Médico**
+  - Método: DELETE
+  - Ruta: `/api/deleteDoctor/{id}`
+  - Descripción: Elimina un médico del sistema.
+  - Ejemplo de Ejecución: (mismo formato que el anterior)
 
-### Obtiene el historial del paciente filtrado por su nombre
+### Pacientes
 
-GET /historicalMedicalRecords/{name}
+- **Buscar Todos los Pacientes**
+  - Método: GET
+  - Ruta: `/api/findAllPatient`
+  - Descripción: Busca todos los pacientes disponibles en el sistema.
+  - Ejemplo de Ejecución: (mismo formato que el anterior)
 
-Respuesta:
+- **Buscar Paciente por Run**
+  - Método: GET
+  - Ruta: `/api/findPatientByRun/{run}`
+  - Descripción: Busca un paciente por su Run.
+  - Ejemplo de Ejecución: (mismo formato que el anterior)
 
-```json
-[
-    {
-        "date": "2022-04-10",
-        "doctor": {
-            "id": "D004",
-            "name": "Dra. Garcia",
-            "specialization": "Dermatología",
-            "phoneNumber": "+554433221",
-            "email": "dra.garcia@example.com",
-            "consultationHours": "Lunes, Miércoles y Viernes 8:30-16:30",
-            "hospital": "Hospital Dermatológico"
-        },
-        "diagnosis": "Fiebre alta",
-        "treatment": "Antibióticos y reposo"
-    },
-    {
-        "date": "2022-05-22",
-        "doctor": {
-            "id": "D005",
-            "name": "Dr. Fernandez",
-            "specialization": "Oftalmología",
-            "phoneNumber": "+778899001",
-            "email": "dr.fernandez@example.com",
-            "consultationHours": "Lunes y Jueves 9:30-17:30",
-            "hospital": "Hospital Oftalmológico"
-        },
-        "diagnosis": "Lesión en la rodilla",
-        "treatment": "Cirugía reconstructiva"
-    },
-    {
-        "date": "2022-06-18",
-        "doctor": {
-            "id": "D006",
-            "name": "Dra. Lopez",
-            "specialization": "Ginecología",
-            "phoneNumber": "+112233445",
-            "email": "dra.lopez@example.com",
-            "consultationHours": "Lunes, Miércoles y Viernes 8:00-16:00",
-            "hospital": "Hospital de la Mujer"
-        },
-        "diagnosis": "Conjuntivitis",
-        "treatment": "Gotas oftálmicas y lavados"
-      }
-  ]
- 
-### Obtiene el listado completo de medicos
+- **Crear Paciente**
+  - Método: POST
+  - Ruta: `/api/createPatient`
+  - Descripción: Crea un nuevo paciente en el sistema.
+  - Ejemplo de Ejecución: (mismo formato que el anterior)
 
-GET /allMedicalRecords
+- **Actualizar Paciente**
+  - Método: PUT
+  - Ruta: `/api/updatePatient/{id}`
+  - Descripción: Actualiza un paciente existente en el sistema.
+  - Ejemplo de Ejecución: (mismo formato que el anterior)
 
-Respuesta:
-
-```json
-[
-    {
-        "id": "D001",
-        "name": "Dr. Smith",
-        "specialization": "Cardiología",
-        "phoneNumber": "+123456789",
-        "email": "dr.smith@example.com",
-        "consultationHours": "Lunes a Viernes 9:00-17:00",
-        "hospital": "Hospital Central"
-    },
-    {
-        "id": "D002",
-        "name": "Dr. Johnson",
-        "specialization": "Pediatría",
-        "phoneNumber": "+987654321",
-        "email": "dr.johnson@example.com",
-        "consultationHours": "Lunes a Viernes 8:00-16:00",
-        "hospital": "Hospital Infantil"
-    },
-    {
-        "id": "D003",
-        "name": "Dr. Martinez",
-        "specialization": "Neurología",
-        "phoneNumber": "+112233445",
-        "email": "dr.martinez@example.com",
-        "consultationHours": "Martes y Jueves 10:00-18:00",
-        "hospital": "Hospital Neurológico"
-    },
-    {
-        "id": "D004",
-        "name": "Dra. Garcia",
-        "specialization": "Dermatología",
-        "phoneNumber": "+554433221",
-        "email": "dra.garcia@example.com",
-        "consultationHours": "Lunes, Miércoles y Viernes 8:30-16:30",
-        "hospital": "Hospital Dermatológico"
-    },
-    {
-        "id": "D005",
-        "name": "Dr. Fernandez",
-        "specialization": "Oftalmología",
-        "phoneNumber": "+778899001",
-        "email": "dr.fernandez@example.com",
-        "consultationHours": "Lunes y Jueves 9:30-17:30",
-        "hospital": "Hospital Oftalmológico"
-    },
-    {
-        "id": "D006",
-        "name": "Dra. Lopez",
-        "specialization": "Ginecología",
-        "phoneNumber": "+112233445",
-        "email": "dra.lopez@example.com",
-        "consultationHours": "Lunes, Miércoles y Viernes 8:00-16:00",
-        "hospital": "Hospital de la Mujer"
-    }
-]
-
-### Obtiene un medico filtrado por nombre
-
-GET /findDoctor/{name}
-
-Respuesta:
-{
-    "id": "D001",
-    "name": "Dr. Smith",
-    "specialization": "Cardiología",
-    "phoneNumber": "+123456789",
-    "email": "dr.smith@example.com",
-    "consultationHours": "Lunes a Viernes 9:00-17:00",
-    "hospital": "Hospital Central"
-}
+- **Eliminar Paciente**
+  - Método: DELETE
+  - Ruta: `/api/deletePatient/{id}`
+  - Descripción: Elimina un paciente del sistema.
+  - Ejemplo de Ejecución: (mismo formato que el anterior)

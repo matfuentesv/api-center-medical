@@ -1,65 +1,102 @@
 package cl.company.center.medical.model;
 
-import java.util.List;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import org.springframework.hateoas.RepresentationModel;
 
-public class Patient {
+@Entity(name = "Paciente")
+public class Patient extends RepresentationModel<Patient> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "nombre")
+    @NotBlank(message = "No puede ingresar un nombre vacio")
+    @NotNull(message = "No puede ingresar un nombre nulo")
+    private String nombre;
+    @Column(name = "apellido")
+    @NotBlank(message = "No puede ingresar un apellido vacio")
+    @NotNull(message = "No puede ingresar un apellido nulo")
+    private String apellido;
+    @Column(name = "edad")
+    @Positive(message = "La edad debe ser mayor a cero")
+    private int edad;
+    @Column(name = "direccion")
+    @NotBlank(message = "No puede ingresar una direccion vacio")
+    @NotNull(message = "No puede ingresar una direccion nulo")
+    private String direccion;
+    @Column(name = "celular")
+    @NotBlank(message = "No puede ingresar un celular vacio")
+    @NotNull(message = "No puede ingresar un celular nulo")
+    private String celular;
+    @Column(name = "run")
+    @NotBlank(message = "No puede ingresar un run vacio")
+    @NotNull(message = "No puede ingresar un run nulo")
+    private String run;
 
-    private String id;
-    private String name;
-    private int age;
-    private String address;
-    private List<MedicalRecord> medicalRecords;
 
-    public Patient(String id, String name, int age, String address, List<MedicalRecord> medicalRecords) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.address = address;
-        this.medicalRecords = medicalRecords;
-    }
-
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public Patient setId(String id) {
+    public Patient setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public Patient setName(String name) {
-        this.name = name;
+    public Patient setNombre(String nombre) {
+        this.nombre = nombre;
         return this;
     }
 
-    public int getAge() {
-        return age;
+    public String getApellido() {
+        return apellido;
     }
 
-    public Patient setAge(int age) {
-        this.age = age;
+    public Patient setApellido(String apellido) {
+        this.apellido = apellido;
         return this;
     }
 
-    public String getAddress() {
-        return address;
+    public int getEdad() {
+        return edad;
     }
 
-    public Patient setAddress(String address) {
-        this.address = address;
+    public Patient setEdad(int edad) {
+        this.edad = edad;
         return this;
     }
 
-    public List<MedicalRecord> getMedicalRecords() {
-        return medicalRecords;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public Patient setMedicalRecords(List<MedicalRecord> medicalRecords) {
-        this.medicalRecords = medicalRecords;
+    public Patient setDireccion(String direccion) {
+        this.direccion = direccion;
+        return this;
+    }
+
+    public String getRun() {
+        return run;
+    }
+
+    public Patient setRun(String run) {
+        this.run = run;
+        return this;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public Patient setCelular(String celular) {
+        this.celular = celular;
         return this;
     }
 }

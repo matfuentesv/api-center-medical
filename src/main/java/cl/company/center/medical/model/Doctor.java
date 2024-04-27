@@ -1,56 +1,91 @@
 package cl.company.center.medical.model;
 
-public class Doctor {
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.hateoas.RepresentationModel;
 
-    private String id;
-    private String name;
-    private String specialization;
-    private String phoneNumber;
+
+@Entity(name = "Doctor")
+public class Doctor extends RepresentationModel<Doctor> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "nombre")
+    @NotBlank(message = "No puede ingresar un nombre vacio")
+    @NotNull(message = "No puede ingresar un nombre nulo")
+    private String nombre;
+    @Column(name = "apellido")
+    @NotBlank(message = "No puede ingresar un apellido vacio")
+    @NotNull(message = "No puede ingresar un apellido nulo")
+    private String apellido;
+    @Column(name = "especializacion")
+    @NotBlank(message = "No puede ingresar una especializacion vacio")
+    @NotNull(message = "No puede ingresar una especializacion nulo")
+    private String especializacion;
+    @Column(name = "celular")
+    @NotBlank(message = "No puede ingresar un celular vacio")
+    @NotNull(message = "No puede ingresar un celular nulo")
+    private String celular;
+    @Column(name = "email")
+    @NotBlank(message = "No puede ingresar un email vacio")
+    @NotNull(message = "No puede ingresar un email nulo")
+    @Email(message = "No puede ingresar un email invalido")
     private String email;
-    private String consultationHours;
+    @Column(name = "horaconsulta")
+    @NotBlank(message = "No puede ingresar un horaConsulta vacio")
+    @NotNull(message = "No puede ingresar un horaConsulta nulo")
+    private String horaConsulta;
+    @Column(name = "hospital")
+    @NotBlank(message = "No puede ingresar un hospital vacio")
+    @NotNull(message = "No puede ingresar un hospital nulo")
     private String hospital;
 
-    public Doctor(){}
-    public Doctor(String id, String name, String specialization, String phoneNumber, String email, String consultationHours, String hospital) {
-        this.id = id;
-        this.name = name;
-        this.specialization = specialization;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.consultationHours = consultationHours;
-        this.hospital = hospital;
-    }
+    @Column(name = "run")
+    @NotBlank(message = "No puede ingresar un run vacio")
+    @NotNull(message = "No puede ingresar un run nulo")
+    private String run;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getSpecialization() {
-        return specialization;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getEspecializacion() {
+        return especializacion;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setEspecializacion(String especializacion) {
+        this.especializacion = especializacion;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 
     public String getEmail() {
@@ -61,12 +96,12 @@ public class Doctor {
         this.email = email;
     }
 
-    public String getConsultationHours() {
-        return consultationHours;
+    public String getHoraConsulta() {
+        return horaConsulta;
     }
 
-    public void setConsultationHours(String consultationHours) {
-        this.consultationHours = consultationHours;
+    public void setHoraConsulta(String horaConsulta) {
+        this.horaConsulta = horaConsulta;
     }
 
     public String getHospital() {
@@ -75,5 +110,13 @@ public class Doctor {
 
     public void setHospital(String hospital) {
         this.hospital = hospital;
+    }
+
+    public String getRun() {
+        return run;
+    }
+
+    public void setRun(String run) {
+        this.run = run;
     }
 }
